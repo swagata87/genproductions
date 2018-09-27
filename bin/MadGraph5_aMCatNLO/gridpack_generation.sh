@@ -282,7 +282,8 @@ if [ ! -d ${AFS_GEN_FOLDER}/${name}_gridpack ]; then
       #get needed BSM model
       if [[ $model = *[!\ ]* ]]; then
         echo "Loading extra model $model"
-        wget --no-verbose --no-check-certificate https://cms-project-generators.web.cern.ch/cms-project-generators/$model	
+#        wget --no-verbose --no-check-certificate https://cms-project-generators.web.cern.ch/cms-project-generators/$model	
+        wget --no-verbose --no-check-certificate http://insti.physics.sunysb.edu/~curtin/HAHM_MG5model/$model	
         cd models
         if [[ $model == *".zip"* ]]; then
           unzip ../$model
@@ -290,6 +291,7 @@ if [ ! -d ${AFS_GEN_FOLDER}/${name}_gridpack ]; then
           tar zxvf ../$model
         elif [[ $model == *".tar"* ]]; then
           tar xavf ../$model
+          cp -r HAHM_MG5model_v3/HAHM_variableMW_v3_UFO .
         else 
           echo "A BSM model is specified but it is not in a standard archive (.zip or .tar)"
         fi
